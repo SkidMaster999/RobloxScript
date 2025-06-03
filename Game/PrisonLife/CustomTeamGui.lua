@@ -133,7 +133,7 @@ CriminalButton.MouseButton1Click:Connect(function()
 		pcall(function()
 			plr.Character:PivotTo(workspace["Criminals Spawn"].SpawnLocation:GetPivot())
 		end)
-	until plr.Team.Name=="Really red"
+	until plr.Team.Name=="Criminals"
 end)
 plr.CharacterAdded:Connect(function()
 	if plr.Team.Name=="Neutral" then
@@ -142,7 +142,9 @@ plr.CharacterAdded:Connect(function()
 	else
 		TeamFrame.Visible = false
 	end
+	plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("fadeFrame").Visible = false
 end)
 if plr.Team.Name=="Neutral" then
 	HideGui()
 end
+plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("fadeFrame").Visible = false
