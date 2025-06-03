@@ -1,3 +1,7 @@
+local plr = game:GetService("Players").LocalPlayer
+if plr.PlayerGui:FindFirstChild("TeamGui") then
+	return
+end
 local HideGui = ...
 -- Gui to Lua
 -- Version: 3.2
@@ -138,4 +142,6 @@ plr.CharacterAdded:Connect(function()
 	else
 		TeamFrame.Visible = false
 	end
+	plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("intro").fadeFrame.Visible = false
 end)
+plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("intro").fadeFrame.Visible = false
