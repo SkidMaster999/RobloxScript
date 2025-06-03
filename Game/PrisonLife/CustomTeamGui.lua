@@ -142,6 +142,7 @@ plr.CharacterAdded:Connect(function()
 	else
 		TeamFrame.Visible = false
 	end
-	plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("intro").fadeFrame.Visible = false
 end)
-plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("intro").fadeFrame.Visible = false
+if plr.Team.Name=="Neutral" then
+	HideGui()
+end
