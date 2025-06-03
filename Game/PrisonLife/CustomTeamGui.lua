@@ -2,7 +2,19 @@ local plr = game:GetService("Players").LocalPlayer
 if plr.PlayerGui:FindFirstChild("TeamGui") then
 	return
 end
-local HideGui = ...
+local function HideGui()
+        local Camera = workspace.CurrentCamera
+        for i = 1, 5 do
+		task.wait()
+	        pcall(function()
+		        plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("intro").Visible=false
+		        plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("hud").Visible=true
+		        Camera.FieldOfView=70
+		        Camera.CameraType=Enum.CameraType.Custom
+		        Camera.CameraSubject=plr.Character:FindFirstChild("Humanoid")
+	        end)
+        end
+end
 -- Gui to Lua
 -- Version: 3.2
 
@@ -119,6 +131,9 @@ CriminalButton.TextWrapped = true
 
 GuardButton.MouseButton1Click:Connect(function()
 	workspace.Remote.TeamEvent:FireServer("Bright blue")
+	if #game:GetService("Teams").Guards:GetPlayers()>7 then
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title="Guards is full",Text="Guards team is currently full!",Duration=5,})
+	end
 end)
 InmateButton.MouseButton1Click:Connect(function()
 	workspace.Remote.TeamEvent:FireServer("Bright orange")
@@ -131,7 +146,7 @@ CriminalButton.MouseButton1Click:Connect(function()
 	local RS = game:GetService("RunService").RenderStepped
 	repeat RS:Wait()
 		pcall(function()
-			plr.Character:PivotTo(workspace["Criminals Spawn"].SpawnLocation:GetPivot())
+			plr.Character:PivotTo(workspace["Criminals Spawn"].SpawnLocation:GetPivot()*CFrame.new(0,1.5,0))
 		end)
 	until plr.Team.Name=="Criminals"
 end)
