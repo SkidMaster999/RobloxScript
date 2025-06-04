@@ -2,19 +2,7 @@ local plr = game:GetService("Players").LocalPlayer
 if plr.PlayerGui:FindFirstChild("TeamGui") then
 	return
 end
-local function HideGui()
-        local Camera = workspace.CurrentCamera
-        for i = 1, 5 do
-	        pcall(function()
-		        plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("intro").Visible=false
-		        plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("hud").Visible=true
-		        Camera.FieldOfView=70
-		        Camera.CameraType=Enum.CameraType.Custom
-		        Camera.CameraSubject=plr.Character:FindFirstChild("Humanoid")
-	        end)
-		wait()
-        end
-end
+local HideGui = ...
 -- Gui to Lua
 -- Version: 3.2
 
@@ -157,7 +145,6 @@ plr.CharacterAdded:Connect(function()
 	else
 		TeamFrame.Visible = false
 	end
-	plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("fadeFrame").Visible = false
 end)
 if plr.Team.Name=="Neutral" then
 	HideGui()
