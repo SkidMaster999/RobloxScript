@@ -5,7 +5,6 @@ end
 local function HideGui()
         local Camera = workspace.CurrentCamera
         for i = 1, 5 do
-		task.wait()
 	        pcall(function()
 		        plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("intro").Visible=false
 		        plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("hud").Visible=true
@@ -13,6 +12,7 @@ local function HideGui()
 		        Camera.CameraType=Enum.CameraType.Custom
 		        Camera.CameraSubject=plr.Character:FindFirstChild("Humanoid")
 	        end)
+		wait()
         end
 end
 -- Gui to Lua
