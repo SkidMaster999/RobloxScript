@@ -142,6 +142,12 @@ plr.CharacterAdded:Connect(function()
 	if plr.Team.Name=="Neutral" then
 		TeamFrame.Visible = true
 		HideGui()
+		local char = plr.Character
+		local hum = char:FindFirstChild("Humanoid")
+		repeat task.wait() until hum.Health<10 or plr.Character~=char
+		if plr.Team.Name=="Neutral" then
+			workspace.Remote.TeamEvent:FireServer("Medium stone grey")
+		end
 	else
 		TeamFrame.Visible = false
 	end
