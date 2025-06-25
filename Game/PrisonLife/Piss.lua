@@ -57,7 +57,7 @@ TextBox.BorderSizePixel = 0
 TextBox.Position = UDim2.new(0, 0, 0.493182659, 0)
 TextBox.Size = UDim2.new(0, 357, 0, 50)
 TextBox.Font = Enum.Font.SourceSans
-TextBox.Text = [[loadstring(game:HttpGet("https://pastebin.com/raw/8axgbiG7"))()]]
+TextBox.Text = [[loadstring(game:HttpGet("https://pastebin.com/raw/WtDMuE6C"))()]]
 TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.TextScaled = true
 TextBox.TextSize = 14.000
@@ -83,13 +83,13 @@ CopyButton.MouseButton1Click:Connect(function()
 	local Clip = setclipboard or toclipboard or set_clipboard or (Clipboard and Clipboard.set) or toClipboard
 	if Clip or Close1 then
 		ScreenGui:Destroy()
-		Clip([[loadstring(game:HttpGet("https://pastebin.com/raw/8axgbiG7"))()]])
+		Clip([[loadstring(game:HttpGet("https://pastebin.com/raw/WtDMuE6C"))()]])
 	else
 		game:GetService("StarterGui"):SetCore("SendNotification", {
 			Title = "Click again to close.",
-			Text = "Please manually copy it. Your executor doesn't support clipboards",
+			Text = "Manually copy the loadstring. Your executor doesn't support clipboards",
 			Icon = "",
-			Duration = 15,
+			Duration = 20,
 		})
 		Close1 = true
 	end
