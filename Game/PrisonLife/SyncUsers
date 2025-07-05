@@ -1,7 +1,7 @@
 --This script synchronizes with other users to make commands more effective
---Dont try abusing this API you stupid nickger
---Feel free to synchronize with my script if you own one. That was the intended purpose
---This script is designed to emulate the HD Admin experience
+--Dont try abusing the API you stupid nickger
+--It is open source for other script creators to synchronize
+--This script is designed to give the HD Admin experience
 local N,M,G = ...
 --N = Settings
 --M = GetGun
@@ -19,6 +19,7 @@ local API = {
 				B = a[i]
 			})
 		end
+		--replace this with your own get gun function if you want to sync
 		local gun = M("M9")
 		game:GetService("ReplicatedStorage").ShootEvent:FireServer(events,gun)
 		game:GetService("ReplicatedStorage").ReloadEvent:FireServer(gun)
@@ -30,20 +31,19 @@ local API = {
 }
 local Players = game:GetService("Players")
 G.PAUsers = Players.LocalPlayer.Name
-local ReplEvent = game:GetService("ReplicatedStorage"):WaitForChild("ReplicateEvent",0.5)
+local ReplEvent = game:GetService("ReplicatedStorage"):WaitForChild("ReplicateEvent",0.1)
 if ReplEvent then
 	G.SyncUsers=ReplEvent.OnClientEvent:Connect(function(a)
 		if SyncWithUsers and a[1] and a[1].B then
-			local b = a[1].B
 			if not Cool then
 				Cool = true
 				task.delay(2,function()
 					Cool = nil
 				end)
-				if b=="PlayMusic" and a[2] and a[2].B then
+				if a[1].B=="PlayMusic" and a[2] and a[2].B then
 					game.Players:Chat(N.."music "..a[2].B.." _synced")
 				end
-				if b=="StopMusic" then
+				if a[1].B=="StopMusic" then
 					for i,v in pairs(workspace:GetChildren()) do
 						if v.Name=="Playing Music" then
 							v:Destroy()
@@ -51,30 +51,34 @@ if ReplEvent then
 						end
 					end
 				end
-				if b=="Crash" then
-					if not _G.CrashingServer then
-						_G.CrashingServer = true
+				if a[1].B=="Crash" then
+					--If you are a script creator please cooperate with me and synchronize your script with mine
+					if not G.CrashingServer then
+						G.CrashingServer = true
 						game.Players:Chat(N.."crashserver _synced")
 						Notif("SyncWithUsers | Another user has initiated server crash.")
 					end
 				end
-				--I realized this can be abused.
+				--This can be abused so FYN! (fack you nikger)
 				--if b=="Ecrash" then
 					--game.Players:Chat(N.."eventcrash")
 				--end
-				if b=="Notify" and a[2] and a[2].B then
+				if a[1].B=="Notify" and a[2] and a[2].B then
 					local plr = Players:FindFirstChild(a[2].B)
-					if plr and a[3] and a[3].B then
+					--This can be spoofed so FYN and Sybau
+					if plr and plr~=Players.LocalPlayer and a[3] and a[3].B then
 						Notif("[From "..plr.Name.."]: "..a[3].B)
 					end
 				end
-				if b=="GetUser_PissAdmin" then
+				if a[1].B=="GetUser_PissAdmin" then
 					API.Send({"GetUser_Confirm",game.Players.LocalPlayer.Name})
 				end
 			end
-			if b=="GetUser_Confirm" and G.GettingUsers and a[2] and a[2].B then
+			if a[1].B=="GetUser_Confirm" and a[2] and a[2].B then
 				local plr = Players:FindFirstChild(a[2].B)
-				if plr then
+				--Made sure you dont find a way to fill memory with junk
+				--FYN! Stop tryna bypass my shit
+				if plr and #G.PAUsers<576 then
 					G.PAUsers = G.PAUsers..", "..plr.Name
 				end
 			end
