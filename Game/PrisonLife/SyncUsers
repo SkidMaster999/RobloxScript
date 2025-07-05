@@ -3,6 +3,9 @@
 --Feel free to synchronize with my script if you are a script creator
 --To disable this, simply goto the settings page and turn "SyncWithUsers" off
 local N,M,G = ...
+--N = Settings
+--M = GetGun
+--G = Globals
 local Notif = _G.TopBarNotif
 local SyncWithUsers = true
 local Cool = nil
@@ -20,28 +23,24 @@ local API = {
 		game:GetService("ReplicatedStorage").ShootEvent:FireServer(events,gun)
 		game:GetService("ReplicatedStorage").ReloadEvent:FireServer(gun)
 	end,
-	Off = function()
-		SyncWithUsers = nil
-		return "Off"
-	end,
-	On = function()
-		SyncWithUsers = true
-		return "On"
+	Tog = function()
+		SyncWithUsers = not SyncWithUsers
+		return SyncWithUsers and "ON" or "OFF"
 	end,
 }
 local Players = game:GetService("Players")
 G.PAUsers = Players.LocalPlayer.Name
-local ReplEvent = game:GetService("ReplicatedStorage"):WaitForChild("ReplicateEvent",8)
+local ReplEvent = game:GetService("ReplicatedStorage"):WaitForChild("ReplicateEvent",0.5)
 if ReplEvent then
 	G.Users_Sync=ReplEvent.OnClientEvent:Connect(function(a)
 		if SyncWithUsers and a[1] and a[1].B then
 			local b = a[1].B
 			if not Cool then
 				Cool = true
-				task.delay(1.5,function()
+				task.delay(2,function()
 					Cool = nil
 				end)
-				if b=="PlayMusic" then
+				if b=="PlayMusic" and a[2] and a[2].B then
 					game.Players:Chat(N.."music "..a[2].B.." _synced")
 				end
 				if b=="StopMusic" then
@@ -55,9 +54,10 @@ if ReplEvent then
 				if b=="Crash" then
 					game.Players:Chat(N.."crashserver")
 				end
-				if b=="Ecrash" then
-					game.Players:Chat(N.."eventcrash")
-				end
+				--I realized this can be abused.
+				--if b=="Ecrash" then
+					--game.Players:Chat(N.."eventcrash")
+				--end
 				if b=="GetUser_PissAdmin" then
 					API.Send({"GetUser_Confirm",game.Players.LocalPlayer.Name})
 				end
