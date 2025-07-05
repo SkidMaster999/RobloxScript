@@ -1,7 +1,7 @@
 --This script synchronizes with other users to make commands more effective
 --Dont try abusing this API you stupid nickger
---Feel free to synchronize with my script if you are a script creator
---This script is designed to give an authentic HD Admin experience.
+--Feel free to synchronize with my script if you own one. That was the intended purpose
+--This script is designed to emulate the HD Admin experience
 local N,M,G = ...
 --N = Settings
 --M = GetGun
@@ -37,7 +37,7 @@ if ReplEvent then
 			local b = a[1].B
 			if not Cool then
 				Cool = true
-				task.delay(3,function()
+				task.delay(2,function()
 					Cool = nil
 				end)
 				if b=="PlayMusic" and a[2] and a[2].B then
@@ -55,6 +55,7 @@ if ReplEvent then
 					if not _G.CrashingServer then
 						_G.CrashingServer = true
 						game.Players:Chat(N.."crashserver _synced")
+						Notif("SyncWithUsers | Another user has initiated server crash.")
 					end
 				end
 				--I realized this can be abused.
