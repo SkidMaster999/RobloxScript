@@ -1,7 +1,7 @@
 --This script synchronizes with other users to make commands more effective
 --Dont try abusing this API you stupid nickger
 --Feel free to synchronize with my script if you are a script creator
---To disable this, simply goto the settings page and turn "SyncWithUsers" off
+--This script is designed to give an authentic HD Admin experience.
 local N,M,G = ...
 --N = Settings
 --M = GetGun
@@ -58,11 +58,17 @@ if ReplEvent then
 				--if b=="Ecrash" then
 					--game.Players:Chat(N.."eventcrash")
 				--end
+				if b=="Notify" and a[2] and a[2].B then
+					local plr = Players:FindFirstChild(a[2].B)
+					if plr and a[3] and a[3].B then
+						Notif("[From "..plr.Name.."]: "..a[3].B)
+					end
+				end
 				if b=="GetUser_PissAdmin" then
 					API.Send({"GetUser_Confirm",game.Players.LocalPlayer.Name})
 				end
 			end
-			if b=="GetUser_Confirm" and G.GettingUsers and a[2].B then
+			if b=="GetUser_Confirm" and G.GettingUsers and a[2] and a[2].B then
 				local plr = Players:FindFirstChild(a[2].B)
 				if plr then
 					G.PAUsers = G.PAUsers..", "..plr.Name
