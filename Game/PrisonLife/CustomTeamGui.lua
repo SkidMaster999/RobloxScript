@@ -1,5 +1,5 @@
 local plr = game:GetService("Players").LocalPlayer
-if plr.PlayerGui:FindFirstChild("TeamGui") or game.GameId~=155615604 then
+if plr.PlayerGui:FindFirstChild("TeamGui") or game.PlaceId~=155615604 then
 	return
 end
 local HideGui = function()
