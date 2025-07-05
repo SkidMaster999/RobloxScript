@@ -32,12 +32,12 @@ local Players = game:GetService("Players")
 G.PAUsers = Players.LocalPlayer.Name
 local ReplEvent = game:GetService("ReplicatedStorage"):WaitForChild("ReplicateEvent",0.5)
 if ReplEvent then
-	G.Users_Sync=ReplEvent.OnClientEvent:Connect(function(a)
+	G.SyncUsers=ReplEvent.OnClientEvent:Connect(function(a)
 		if SyncWithUsers and a[1] and a[1].B then
 			local b = a[1].B
 			if not Cool then
 				Cool = true
-				task.delay(2,function()
+				task.delay(3,function()
 					Cool = nil
 				end)
 				if b=="PlayMusic" and a[2] and a[2].B then
@@ -52,7 +52,10 @@ if ReplEvent then
 					end
 				end
 				if b=="Crash" then
-					game.Players:Chat(N.."crashserver")
+					if not _G.CrashingServer then
+						_G.CrashingServer = true
+						game.Players:Chat(N.."crashserver _synced")
+					end
 				end
 				--I realized this can be abused.
 				--if b=="Ecrash" then
