@@ -30,7 +30,7 @@ TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BorderSizePixel = 0
 TextLabel.Size = UDim2.new(0, 357, 0, 46)
 TextLabel.Font = Enum.Font.Nunito
-TextLabel.Text = "IMPORTANT"
+TextLabel.Text = "LOADER"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextScaled = true
 TextLabel.TextSize = 14.000
@@ -72,25 +72,17 @@ CopyButton.BorderSizePixel = 0
 CopyButton.Position = UDim2.new(0.218487397, 0, 0.786981285, 0)
 CopyButton.Size = UDim2.new(0, 200, 0, 34)
 CopyButton.Font = Enum.Font.SourceSans
-CopyButton.Text = "COPY & CLOSE"
+CopyButton.Text = "COPY & EXECUTE"
 CopyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 CopyButton.TextScaled = true
 CopyButton.TextSize = 14.000
 CopyButton.TextWrapped = true
 
-local Close1 = nil
 CopyButton.MouseButton1Click:Connect(function()
+	ScreenGui:Destroy()
 	local Clip = setclipboard or toclipboard or set_clipboard or (Clipboard and Clipboard.set) or toClipboard
-	if Clip or Close1 then
-		ScreenGui:Destroy()
+	if Clip then
 		Clip([[loadstring(game:HttpGet("https://pastebin.com/raw/BBmCUwQg"))()]])
-	else
-		game:GetService("StarterGui"):SetCore("SendNotification", {
-			Title = "Click again to close.",
-			Text = "Manually copy the loadstring. Your executor doesn't support clipboards",
-			Icon = "",
-			Duration = 20,
-		})
-		Close1 = true
 	end
+	loadstring(game:HttpGet("https://pastebin.com/raw/BBmCUwQg"))()
 end)
