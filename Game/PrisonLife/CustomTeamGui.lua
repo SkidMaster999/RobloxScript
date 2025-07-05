@@ -1,8 +1,23 @@
 local plr = game:GetService("Players").LocalPlayer
-if plr.PlayerGui:FindFirstChild("TeamGui") then
+if plr.PlayerGui:FindFirstChild("TeamGui") or game.GameId~=155615604 then
 	return
 end
-local HideGui = ...
+local HideGui = function()
+	local Camera = game:GetService("Workspace").CurrentCamera
+	task.delay(0.05,function()
+		game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.All,true)
+	end)
+	for i = 1, 3 do
+		pcall(function()
+			plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("intro").Visible=false
+			plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("hud").Visible=true
+			Camera.FieldOfView=70
+			Camera.CameraType=Enum.CameraType.Custom
+			Camera.CameraSubject=plr.Character:FindFirstChild("Humanoid")
+		end)
+		wait()
+	end
+end
 -- Gui to Lua
 -- Version: 3.2
 
@@ -121,6 +136,7 @@ GuardButton.MouseButton1Click:Connect(function()
 	workspace.Remote.TeamEvent:FireServer("Bright blue")
 	if #game:GetService("Teams").Guards:GetPlayers()>7 then
 		game:GetService("StarterGui"):SetCore("SendNotification",{Title="Guards is full",Text="Guards team is currently full!",Duration=5,})
+		_G.TopBarNotif("Error! Guards team is currently full. Please select a different team.",nil,true)
 	end
 end)
 InmateButton.MouseButton1Click:Connect(function()
@@ -140,11 +156,11 @@ CriminalButton.MouseButton1Click:Connect(function()
 end)
 plr.CharacterAdded:Connect(function()
 	if plr.Team.Name=="Neutral" then
+		task.spawn(HideGui)
 		TeamFrame.Visible = true
-		HideGui()
 		local char = plr.Character
 		local hum = char:WaitForChild("Humanoid",1)
-		repeat task.wait() until hum.Health<10 or plr.Character~=char
+		repeat task.wait() until hum.Health==0 or plr.Character~=char
 		if plr.Team.Name=="Neutral" and hum.Health==0 then
 			workspace.Remote.TeamEvent:FireServer("Medium stone grey")
 		end
@@ -153,6 +169,9 @@ plr.CharacterAdded:Connect(function()
 	end
 end)
 if plr.Team.Name=="Neutral" then
-	HideGui()
+	task.spawn(HideGui)
 end
-plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("fadeFrame").Visible = false
+pcall(function()
+	plr.PlayerGui:FindFirstChild("Home"):FindFirstChild("fadeFrame").Visible = false
+end)
+return HideGui
