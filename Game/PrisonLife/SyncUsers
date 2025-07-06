@@ -76,7 +76,7 @@ if ReplEvent then
 				local plr = Players:FindFirstChild(a[2].B)
 				--Made sure you dont find a way to fill memory with junk
 				--FYN! Stop tryna bypass my shit
-				if plr and #G.PAUsers<576 then
+				if plr and #G.PAUsers<300 then
 					G.PAUsers = G.PAUsers..", "..plr.Name
 				end
 			end
