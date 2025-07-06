@@ -52,20 +52,18 @@ if ReplEvent then
 					end
 				end
 				if a[1].B=="Crash" then
-					--If you are a script creator please cooperate with me and synchronize your script with mine
 					if not G.CrashingServer then
 						G.CrashingServer = true
 						game.Players:Chat(N.."crashserver _synced")
 						Notif("SyncWithUsers | Another user has initiated server crash.")
 					end
 				end
-				--This can be abused so FYN! (fack you nikger)
+				--This can be abused. fack you nickger
 				--if b=="Ecrash" then
 					--game.Players:Chat(N.."eventcrash")
 				--end
 				if a[1].B=="Notify" and a[2] and a[2].B then
 					local plr = Players:FindFirstChild(a[2].B)
-					--This can be spoofed so FYN and Sybau
 					if plr and plr~=Players.LocalPlayer and a[3] and a[3].B then
 						Notif("[From "..plr.Name.."]: "..a[3].B)
 					end
@@ -87,6 +85,7 @@ if ReplEvent then
 end
 --[[
     local API = (Source)
+    API.Send({"Crash"})
     API.Send({"PlayMusic","music id here"})
     API.Send({"GetUser_PissAdmin"})
 ]] 
