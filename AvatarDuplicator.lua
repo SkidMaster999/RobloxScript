@@ -1,5 +1,6 @@
---Made by SkidMaster
-
+--This script clones a user's character without replacing your original character
+--The script's entire purpose is for client side FE scripts
+--Planning on adding FE stuff
 repeat wait() until game:IsLoaded()
 repeat wait() until game.Players.LocalPlayer.Character
 
@@ -150,7 +151,9 @@ local function CopyAvatar(Character)
 				v:FindFirstChild("face"):Destroy()
 			end
 		end
-		Human.HipHeight = Avatar:FindFirstChild("Humanoid").HipHeight
+		if Human.RigType == Avatar:FindFirstChild("Humanoid").RigType then
+			Human.HipHeight = Avatar:FindFirstChild("Humanoid").HipHeight
+		end
 		local playing
 		local humancon=Human.AnimationPlayed:Connect(function(anim)
 			if playing then
