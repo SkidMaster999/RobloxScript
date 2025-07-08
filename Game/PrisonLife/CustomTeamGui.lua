@@ -70,7 +70,7 @@ InmateImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
 InmateImage.BorderSizePixel = 0
 InmateImage.Position = UDim2.new(0.363143623, 0, 0.235602096, 0)
 InmateImage.Size = UDim2.new(0, 100, 0, 100)
-InmateImage.Image = "http://www.roblox.com/asset/?id=103781152367192"
+InmateImage.Image = "rbxassetid://103781152367192"
 
 GuardImage.Name = "GuardImage"
 GuardImage.Parent = TeamFrame
@@ -79,7 +79,7 @@ GuardImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
 GuardImage.BorderSizePixel = 0
 GuardImage.Position = UDim2.new(0.680216789, 0, 0.235602096, 0)
 GuardImage.Size = UDim2.new(0, 100, 0, 100)
-GuardImage.Image = "http://www.roblox.com/asset/?id=136392952860629"
+GuardImage.Image = "rbxassetid://136392952860629"
 
 CriminalImage.Name = "CriminalImage"
 CriminalImage.Parent = TeamFrame
@@ -88,7 +88,7 @@ CriminalImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
 CriminalImage.BorderSizePixel = 0
 CriminalImage.Position = UDim2.new(0.0460704602, 0, 0.235602096, 0)
 CriminalImage.Size = UDim2.new(0, 100, 0, 100)
-CriminalImage.Image = "http://www.roblox.com/asset/?id=89132044530389"
+CriminalImage.Image = "rbxassetid://89132044530389"
 
 InmateButton.Name = "InmateButton"
 InmateButton.Parent = TeamFrame
