@@ -70,7 +70,7 @@ InmateImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
 InmateImage.BorderSizePixel = 0
 InmateImage.Position = UDim2.new(0.363143623, 0, 0.235602096, 0)
 InmateImage.Size = UDim2.new(0, 100, 0, 100)
-InmateImage.Image = "rbxassetid://130635675682549"
+InmateImage.Image = "rbxassetid://105432394347477"
 
 GuardImage.Name = "GuardImage"
 GuardImage.Parent = TeamFrame
@@ -79,7 +79,7 @@ GuardImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
 GuardImage.BorderSizePixel = 0
 GuardImage.Position = UDim2.new(0.680216789, 0, 0.235602096, 0)
 GuardImage.Size = UDim2.new(0, 100, 0, 100)
-GuardImage.Image = "rbxassetid://106584537638966"
+GuardImage.Image = "rbxassetid://136330693516119"
 
 CriminalImage.Name = "CriminalImage"
 CriminalImage.Parent = TeamFrame
@@ -88,7 +88,7 @@ CriminalImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
 CriminalImage.BorderSizePixel = 0
 CriminalImage.Position = UDim2.new(0.0460704602, 0, 0.235602096, 0)
 CriminalImage.Size = UDim2.new(0, 100, 0, 100)
-CriminalImage.Image = "rbxassetid://77949330338035"
+CriminalImage.Image = "rbxassetid://137928226499159"
 
 InmateButton.Name = "InmateButton"
 InmateButton.Parent = TeamFrame
