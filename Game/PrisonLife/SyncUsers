@@ -89,4 +89,5 @@ end
     API.Send({"PlayMusic","music id here"})
     API.Send({"GetUser_PissAdmin"})
 ]] 
+Notif("FUCK ROBLOX! They fucked with the chatgui. Ranked commands are broken. Please wait while I update",nil,true)
 return API
