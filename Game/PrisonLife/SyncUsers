@@ -1,7 +1,6 @@
 --This script synchronizes with other users to make commands more effective
 --Dont try abusing the API you stupid nickger
 --It is open source for other script creators to synchronize
---This script is designed to give the HD Admin experience
 local N,M,G = ...
 --N = Settings
 --M = GetGun
@@ -74,8 +73,7 @@ if ReplEvent then
 			end
 			if a[1].B=="GetUser_Confirm" and a[2] and a[2].B then
 				local plr = Players:FindFirstChild(a[2].B)
-				--Made sure you dont find a way to fill memory with junk
-				--FYN! Stop tryna bypass my shit
+				--Made sure you dont find a way to fill it with junk
 				if plr and #G.PAUsers<300 then
 					G.PAUsers = G.PAUsers..", "..plr.Name
 				end
