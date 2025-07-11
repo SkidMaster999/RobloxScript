@@ -88,7 +88,7 @@ CriminalImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
 CriminalImage.BorderSizePixel = 0
 CriminalImage.Position = UDim2.new(0.0460704602, 0, 0.235602096, 0)
 CriminalImage.Size = UDim2.new(0, 100, 0, 100)
-CriminalImage.Image = "rbxassetid://137928226499159"
+CriminalImage.Image = "rbxassetid://119068648583522"
 
 InmateButton.Name = "InmateButton"
 InmateButton.Parent = TeamFrame
