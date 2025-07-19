@@ -13,3 +13,9 @@ Credits:
 ```
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/NeckHurtsDeathSound.lua"))()
 ```
+
+<h1 align="center">Avatar Duplicator</h1>
+
+```
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/AvatarDuplicator.lua"))()
+```
