@@ -1,7 +1,7 @@
 <h1 align="center">Piss Admin</h1>
 
 ```
-loadstring(game:HttpGet('https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/PissAdmin.lua'))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/PissAdmin.lua"))()
 ```
 
 Credits:
