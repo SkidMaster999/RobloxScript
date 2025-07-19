@@ -1,2 +1,15 @@
-# RobloxScript
-Roblox scripts I made
+<h1 align="center">Piss Admin</h1>
+
+```
+loadstring(game:HttpGet('https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/PissAdmin.lua'))()
+```
+
+Credits:
+- PrizzLife
+- Tiger Admin
+
+<h1 align="center">Neck Hurt Death Sound</h1>
+
+```
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/NeckHurtsDeathSound.lua"))()
+```
