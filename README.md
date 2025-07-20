@@ -7,7 +7,7 @@ This script hub is currently in the making!
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/PissAdmin.lua"))()
 ```
 
-Piss Admin emerged from these ancestors:
+Credits :
 - PrizzLife & Tiger Admin
 
 <h1 align="center">Neck Hurt Death Sound</h1>
