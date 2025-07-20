@@ -1,12 +1,14 @@
+<h1 align="center">NeckHurt Hub</h1>
+This script hub is currently in the making!
+
 <h1 align="center">Piss Admin</h1>
 
 ```
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/PissAdmin.lua"))()
 ```
 
-Credits:
-- PrizzLife
-- Tiger Admin
+Piss Admin emerged from these ancestors:
+- PrizzLife & Tiger Admin
 
 <h1 align="center">Neck Hurt Death Sound</h1>
 
