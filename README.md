@@ -9,8 +9,9 @@ This script hub is currently in the making!
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/PissAdmin.lua"))()
 ```
 
-Credits :
-- PrizzLife & Tiger Admin
+Retarded Move from the PissLife "dev" lmfao
+<img width="625" height="403" alt="image" src="https://github.com/user-attachments/assets/6848cd70-cd1c-4e65-b08c-8552b2d76ea5" />
+
 
 
 <h1 align="center">Neck Hurt Death Sound</h1>
