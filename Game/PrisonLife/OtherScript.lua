@@ -1,4 +1,8 @@
 local addother = ...
+addother("Join my server at discord.gg/nX8efHh3hk",function()
+	local Clip = setclipboard or toclipboard or set_clipboard or (Clipboard and Clipboard.set) or toClipboard
+	Clip("https://discord.gg/nX8efHh3hk")
+end)
 addother("Infinite Yield",function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 end)
