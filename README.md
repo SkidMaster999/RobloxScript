@@ -9,7 +9,7 @@ This script hub is currently in the making!
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/PissAdmin.lua"))()
 ```
 
-Piss Admin was made from these two ancestor's code:
+Credits :
 - PrizzLife & Tiger Admin
 
 
