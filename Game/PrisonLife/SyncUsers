@@ -61,7 +61,7 @@ if ReplEvent then
 					end
 				end
 				if a[1].B=="GetUser_PissAdmin" then
-					API.Send({"GetUser_Confirm",game.Players.LocalPlayer.Name})
+					--API.Send({"GetUser_Confirm",game.Players.LocalPlayer.Name})
 				end
 			end
 			if a[1].B=="GetUser_Confirm" and a[2] and a[2].B then
