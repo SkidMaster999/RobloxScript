@@ -1,10 +1,7 @@
 --This script synchronizes with other users to make commands more effective
 --Dont try abusing the API you stupid nickger
 --It is open source for other script creators to synchronize
-local N,M,G = ...
---N = Settings
---M = GetGun
---G = Globals
+local N,I,G,A = ...
 local Notif = _G.TopBarNotif
 local SyncWithUsers = true
 local Cool = nil
@@ -19,7 +16,7 @@ local API = {
 			})
 		end
 		--replace this with your own get gun function if you want to sync
-		local gun = M("M9")
+		local gun = I("M9")
 		game:GetService("ReplicatedStorage").ShootEvent:FireServer(events,gun)
 		game:GetService("ReplicatedStorage").ReloadEvent:FireServer(gun)
 	end,
@@ -30,7 +27,7 @@ local API = {
 }
 local Players = game:GetService("Players")
 G.PAUsers = Players.LocalPlayer.Name
-local ReplEvent = game:GetService("ReplicatedStorage"):WaitForChild("ReplicateEvent",0.1)
+local ReplEvent = game:GetService("ReplicatedStorage"):WaitForChild("ReplicateEvent",1)
 if ReplEvent then
 	G.SyncUsers=ReplEvent.OnClientEvent:Connect(function(a)
 		if SyncWithUsers and a[1] and a[1].B then
@@ -40,7 +37,7 @@ if ReplEvent then
 					Cool = nil
 				end)
 				if a[1].B=="PlayMusic" and a[2] and a[2].B then
-					game.Players:Chat(N.."music "..a[2].B.." _synced")
+					A["music"]({"",a[2].B,"_sync"})
 				end
 				if a[1].B=="StopMusic" then
 					for i,v in pairs(workspace:GetChildren()) do
@@ -53,14 +50,10 @@ if ReplEvent then
 				if a[1].B=="Crash" then
 					if not G.CrashingServer then
 						G.CrashingServer = true
-						game.Players:Chat(N.."crashserver _synced")
+						A["crashserver"]({"","_synced"})
 						Notif("SyncWithUsers | Another user has initiated server crash.")
 					end
 				end
-				--This can be abused. fack you nickger
-				--if b=="Ecrash" then
-					--game.Players:Chat(N.."eventcrash")
-				--end
 				if a[1].B=="Notify" and a[2] and a[2].B then
 					local plr = Players:FindFirstChild(a[2].B)
 					if plr and plr~=Players.LocalPlayer and a[3] and a[3].B then
@@ -74,7 +67,7 @@ if ReplEvent then
 			if a[1].B=="GetUser_Confirm" and a[2] and a[2].B then
 				local plr = Players:FindFirstChild(a[2].B)
 				--Made sure you dont find a way to fill it with junk
-				if plr and #G.PAUsers<300 then
+				if plr and #G.PAUsers<125 then
 					G.PAUsers = G.PAUsers..", "..plr.Name
 				end
 			end
