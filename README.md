@@ -9,8 +9,7 @@ This script hub is currently in the making!
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/PissAdmin.lua"))()
 ```
 
-Retarded move from the PissLife "dev" lmfao
-thanks for the members i guess
+This script protects you from pay2win "premium" users
 
 
 <h1 align="center">Neck Hurt Death Sound</h1>
