@@ -1,3 +1,4 @@
+--!!! SyncUsers is updating !!!
 --This script synchronizes with other users to make commands more effective
 --Dont try abusing the API you stupid nickger
 --It is open source for other script creators to synchronize
@@ -37,39 +38,17 @@ if ReplEvent then
 					Cool = nil
 				end)
 				if a[1].B=="PlayMusic" and a[2] and a[2].B then
-					A["music"]({"",a[2].B,"_sync"})
+					
 				end
-				if a[1].B=="StopMusic" then
-					for i,v in pairs(workspace:GetChildren()) do
-						if v.Name=="Playing Music" then
-							v:Destroy()
-							Notif("Music was Stopped By Another User. | Goto settings to disable this.",8)
-						end
-					end
-				end
+				
 				if a[1].B=="Crash" then
 					if not G.CrashingServer then
 						G.CrashingServer = true
-						A["crashserver"]({"","_synced"})
+						
 						Notif("SyncWithUsers | Another user has initiated server crash.")
 					end
 				end
-				if a[1].B=="Notify" and a[2] and a[2].B then
-					local plr = Players:FindFirstChild(a[2].B)
-					if plr and plr~=Players.LocalPlayer and a[3] and a[3].B then
-						Notif("[From "..plr.Name.."]: "..a[3].B)
-					end
-				end
-				if a[1].B=="GetUser_PissAdmin" then
-					--API.Send({"GetUser_Confirm",game.Players.LocalPlayer.Name})
-				end
-			end
-			if a[1].B=="GetUser_Confirm" and a[2] and a[2].B then
-				local plr = Players:FindFirstChild(a[2].B)
-				--Made sure you dont find a way to fill it with junk
-				if plr and #G.PAUsers<125 then
-					G.PAUsers = G.PAUsers..", "..plr.Name
-				end
+				
 			end
 		end
 	end)
