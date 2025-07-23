@@ -18,10 +18,6 @@ local HideGui = function()
 		wait()
 	end
 end
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
 
 local TeamGui = Instance.new("ScreenGui")
 local TeamFrame = Instance.new("Frame")
@@ -32,9 +28,6 @@ local CriminalImage = Instance.new("ImageLabel")
 local InmateButton = Instance.new("TextButton")
 local GuardButton = Instance.new("TextButton")
 local CriminalButton = Instance.new("TextButton")
-local plr = game:GetService("Players").LocalPlayer
-
---Properties:
 
 TeamGui.Name = "TeamGui"
 TeamGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -131,6 +124,27 @@ CriminalButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 CriminalButton.TextScaled = true
 CriminalButton.TextSize = 14.000
 CriminalButton.TextWrapped = true
+
+local LockButton = Instance.new("ImageButton")
+LockButton.Name = "LockButton"
+LockButton.Parent = TeamFrame
+LockButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+LockButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+LockButton.BorderSizePixel = 0
+LockButton.Position = UDim2.new(0.0189701896, 0, 0.031413611, 0)
+LockButton.Size = UDim2.new(0, 25, 0, 25)
+LockButton.Image = "rbxassetid://79152117433951"
+TeamFrame.Active = true
+TeamFrame.Draggable = true
+LockButton.MouseButton1Click:Connect(function()
+	if TeamFrame.Draggable then
+		LockButton.Image = "rbxassetid://4625478089"
+		TeamFrame.Draggable = false
+	else
+		LockButton.Image = "rbxassetid://79152117433951"
+		TeamFrame.Draggable = true
+	end
+end)
 
 GuardButton.MouseButton1Click:Connect(function()
 	workspace.Remote.TeamEvent:FireServer("Bright blue")
