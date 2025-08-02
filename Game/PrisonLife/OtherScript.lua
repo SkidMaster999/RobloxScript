@@ -1,8 +1,7 @@
 local addother = ...
---Stil in testing phase
---addother("Prison Life DrawTool",function()
-	--loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/DrawTool.lua"))()
---end)
+addother("Prison Life DrawTool",function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/DrawTool.lua"))()
+end)
 addother("Infinite Yield",function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 end)
