@@ -1,4 +1,4 @@
-if not(writefile and isfile and A)then warn("unsupported") return _G.TopBarNotif("Unsupported executor!") end
+if not(writefile and isfile and (getcustomasset or getsynasset))then warn("unsupported") return _G.TopBarNotif("Unsupported executor!") end
 for i = 0,16 do
   local F = "neckhurtsong"..tostring(i)..".mp3"
   if not isfile(F) then
