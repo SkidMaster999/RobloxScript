@@ -1,5 +1,3 @@
-Join my [Discord](https://discord.gg/nX8efHh3hk) server for suggestions or bug reports
-
 <h1 align="center">NeckHurt Hub</h1>
 This script hub is currently in the making!
 
@@ -9,7 +7,7 @@ This script hub is currently in the making!
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SkidMaster999/RobloxScript/refs/heads/main/Game/PrisonLife/PissAdmin.lua"))()
 ```
 
-This script protects you from pay2win "premium" users
+This script allows you to get free admin
 
 
 <h1 align="center">Neck Hurt Death Sound</h1>
