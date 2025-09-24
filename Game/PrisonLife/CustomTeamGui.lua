@@ -1,3 +1,5 @@
+--Bruh are you serious right now
+if true then return end
 local plr = game:GetService("Players").LocalPlayer
 if plr.PlayerGui:FindFirstChild("TeamGui") or game.PlaceId~=155615604 then
 	return
