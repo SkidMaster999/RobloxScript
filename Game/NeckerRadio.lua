@@ -1,13 +1,8 @@
 if not(writefile and isfile and (getcustomasset or getsynasset))then warn("unsupported") return _G.TopBarNotif("Unsupported executor!") end
 for i = 0,500 do
+  game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Downloading Song";Text = "This consumes storage. Rejoin to stop";Icon = "";Duration = 5;})
   local V = game:HttpGet("https://neckerdestroyer.ct.ws/media/neckhurtsong"..tostring(i)..".mp3")
   if V then
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-		  Title = "Downloading Song";
-		  Text = "This consumes storage. Rejoin to stop";
-		  Icon = "";
-		  Duration = 5;
-	  })
     writefile("neckhurtsong"..tostring(i)..".mp3",V)
   else break end
   local A=getsynasset or getcustomasset
@@ -19,4 +14,4 @@ for i = 0,500 do
   S.Ended:Wait()
   S:Destroy()
 end
-_G.TopBarNotif("No more neckhurts songs!")
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "No More Neckhurts Songs!";Text = "File Manager > Delta (Executor Name) > workspace > neckhurtsong.mp3";Icon = "";Duration = 5;})
