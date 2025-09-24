@@ -1,7 +1,12 @@
+--Prison Life has changed shootevent and this needs fixing
+--SyncUsers is now deprecated.
+--Might use .Chatted instead
+if true then return end
+
+
 --This script synchronizes with other users to make commands more effective
 --Dont try abusing the API you stupid nickger
 --It is open source for other script creators to synchronize
---Getusers removed and you can blame "The Noob Evolution" for it
 local N,I,G,A = ...
 local Notif = _G.TopBarNotif
 local SyncWithUsers = true
