@@ -133,9 +133,9 @@ LockButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 LockButton.BorderSizePixel = 0
 LockButton.Position = UDim2.new(0.0189701896, 0, 0.031413611, 0)
 LockButton.Size = UDim2.new(0, 25, 0, 25)
-LockButton.Image = "rbxassetid://79152117433951"
+LockButton.Image = "rbxassetid://4625478089"
 TeamFrame.Active = true
-TeamFrame.Draggable = true
+TeamFrame.Draggable = false
 LockButton.MouseButton1Click:Connect(function()
 	if TeamFrame.Draggable then
 		LockButton.Image = "rbxassetid://4625478089"
