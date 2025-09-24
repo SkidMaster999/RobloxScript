@@ -1,15 +1,18 @@
 if not(writefile and isfile and (getcustomasset or getsynasset))then warn("unsupported") return _G.TopBarNotif("Unsupported executor!") end
-for i = 0,24 do
-  local F = "neckhurtsong"..tostring(i)..".mp3"
-  if not isfile(F) then
-    task.spawn(function()
-        _G.TopBarNotif("Downloading "..F.." (Consumes storage)")
-    end)
-    writefile(F,game:HttpGet("https://github.com/SkidMaster999/RobloxObjects/blob/main/"..F.."?raw=true"))
-  end
+for i = 0,500 do
+  local V = game:HttpGet("https://neckerdestroyer.ct.ws/media/neckhurtsong"..tostring(i)..".mp3")
+  if V then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+		  Title = "Loading Song";
+		  Text = "Please wait...";
+		  Icon = "";
+		  Duration = 5;
+	  })
+    writefile("neckhurtsong.mp3",V)
+  else break end
   local A=getsynasset or getcustomasset
   local S=Instance.new("Sound")
-  S.SoundId=A(F)
+  S.SoundId=A("neckhurtsong.mp3")
   S.Volume= 1 
   S.Parent=game:GetService("SoundService")
   S:Play()
