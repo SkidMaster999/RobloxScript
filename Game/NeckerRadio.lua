@@ -3,16 +3,16 @@ for i = 0,500 do
   local V = game:HttpGet("https://neckerdestroyer.ct.ws/media/neckhurtsong"..tostring(i)..".mp3")
   if V then
     game:GetService("StarterGui"):SetCore("SendNotification", {
-		  Title = "Loading Song";
-		  Text = "Please wait...";
+		  Title = "Downloading Song";
+		  Text = "This consumes storage. Rejoin to stop";
 		  Icon = "";
 		  Duration = 5;
 	  })
-    writefile("neckhurtsong.mp3",V)
+    writefile("neckhurtsong"..tostring(i)..".mp3",V)
   else break end
   local A=getsynasset or getcustomasset
   local S=Instance.new("Sound")
-  S.SoundId=A("neckhurtsong.mp3")
+  S.SoundId=A("neckhurtsong"..tostring(i)..".mp3")
   S.Volume= 1 
   S.Parent=game:GetService("SoundService")
   S:Play()
