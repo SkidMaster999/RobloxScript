@@ -1,11 +1,13 @@
-local Letters = {
+--Made by SkidMaster
+--Dont abuse this api you nickger
+local EncryptString,DecryptString = {
     ["a"] = "apple",
     ["b"] = "banana",
     ["c"] = "cat",
     ["d"] = "dog",
     ["e"] = "elephant",
     ["f"] = "fish",
-    ["g"] = "grape",
+    ["g"] = "great",
     ["h"] = "hat",
     ["i"] = "ice",
     ["j"] = "jelly",
@@ -25,6 +27,119 @@ local Letters = {
     ["x"] = "xylophone",
     ["y"] = "yoyo",
     ["z"] = "zebra",
-    ["space"] = " "
+    ["0"] = "neuron",
+    ["1"] = "quark",
+    ["2"] = "python",
+    ["3"] = "gravity",
+    ["4"] = "enzyme",
+    ["5"] = "plasma",
+    ["6"] = "nucleus",
+    ["7"] = "telescope",
+    ["8"] = "electron",
+    ["9"] = "atom"
+},{
+    ["apple"] = "a",
+    ["banana"] = "b",
+    ["cat"] = "c",
+    ["dog"] = "d",
+    ["elephant"] = "e",
+    ["fish"] = "f",
+    ["great"] = "g",
+    ["hat"] = "h",
+    ["ice"] = "i",
+    ["jelly"] = "j",
+    ["kite"] = "k",
+    ["lion"] = "l",
+    ["monkey"] = "m",
+    ["nose"] = "n",
+    ["orange"] = "o",
+    ["penguin"] = "p",
+    ["queen"] = "q",
+    ["rabbit"] = "r",
+    ["sun"] = "s",
+    ["tiger"] = "t",
+    ["umbrella"] = "u",
+    ["violin"] = "v",
+    ["wolf"] = "w",
+    ["xylophone"] = "x",
+    ["yoyo"] = "y",
+    ["zebra"] = "z",
+    ["neuron"] = "0",
+    ["quark"] = "1",
+    ["python"] = "2",
+    ["gravity"] = "3",
+    ["enzyme"] = "4",
+    ["plasma"] = "5",
+    ["nucleus"] = "6",
+    ["telescope"] = "7",
+    ["electron"] = "8",
+    ["atom"] = "9"
 }
---Basic encryption, GTFO my repository you nickger
+local EncryptMsg,DecryptMsg = function(ar)
+    local str = ""
+    for i = 1,#msg do
+        local c = msg:sub(i,i):lower()
+        if c ==" " then
+            str = str.."space "
+        else
+            str = str..(EncryptString[c] or "").." "
+        end
+    end
+    return str:sub(1, -2) 
+end,function(ar)
+    local arg,str = ar:Split(" "),""
+    for i = 1,#arg do
+        if arg[i]=="space" then
+            str = str.." "
+        else
+            str = str..(DecryptString[arg[i]] or "").." "
+        end
+    end
+    return str
+end
+local function SendEncrypted(msg)
+    game:GetService("Players"):Chat("--START OF ENCRYPTED MESSAGE--")
+    local encrypted = EncryptMsg(msg)
+    local words = encrypted:split(" ")
+    local chunk = ""
+    for i = 1,#words do
+        local word = words[i]
+        if #chunk + #word + 1 > 190 then
+            game:GetService("Players"):Chat(chunk:sub(1,-2))
+            chunk = word.." "
+        else
+            chunk = chunk..word.." "
+        end
+    end
+    if #chunk > 0 then
+        game:GetService("Players"):Chat(chunk:sub(1,-2))
+    end
+    game:GetService("Players"):Chat("--END OF ENCRYPTED MESSAGE--")
+end
+local CurrentlyListening,CurrentMsg,Connections,Commands = nil,"",{},{}
+local function OnChatted(arg,plr)
+    if CurrentlyListening then
+        CurrentMsg = CurrentMsg..DecryptMsg(arg)
+    end;if arg=="--START OF ENCRYPTED MESSAGE--" and not CurrentlyListening then
+        CurrentlyListening = plr
+        --In case you try to make it bug
+        task.spawn(function()
+            local t = tick()+1
+            repeat task.wait() until tick()-t>=0 or not CurrentlyListening
+            CurrentlyListening = nil
+        end)
+    end;if arg=="--END OF ENCRYPTED MESSAGE--" and CurrentlyListening then
+        CurrentlyListening = nil
+        if Commands[CurrentMsg] then
+            task.spawn(Commands[CurrentMsg],plr)
+        end
+        CurrentMsg = ""
+    end
+end
+
+--Commands
+Commands["testing"] = function()
+    local helloworld = print
+    helloworld("print")
+end
+SendEncrypted("Hello World!")
