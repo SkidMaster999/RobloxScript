@@ -1,3 +1,4 @@
+--GUI made by SkidMaster, Feel free to use
 local NGui = Instance.new("ScreenGui")
 local NFrame = Instance.new("Frame")
 local NLabel = Instance.new("TextLabel")
@@ -612,5 +613,8 @@ end)
 Gui.Drag(OpenGUI)
 Gui.Drag(SemiColon)
 Gui.Drag(NFrame)
+Gui.CmdBar3 = CmdBar3
+Gui.cmdHandler = cmdHandler
 pcall(function()NGui.Parent=game:GetService("CoreGui")end)
 return Gui
+
