@@ -1,5 +1,6 @@
---Made by SkidMaster
+
 --Dont abuse this api you nickger
+local API = {}
 local EncryptString,DecryptString = {
     ["a"] = "apple",
     ["b"] = "banana",
@@ -75,7 +76,7 @@ local EncryptString,DecryptString = {
     ["electron"] = "8",
     ["atom"] = "9"
 }
-local EncryptMsg,DecryptMsg = function(ar)
+API.EncryptMsg = function(ar)
     local str = ""
     for i = 1,#msg do
         local c = msg:sub(i,i):lower()
@@ -86,7 +87,8 @@ local EncryptMsg,DecryptMsg = function(ar)
         end
     end
     return str:sub(1, -2) 
-end,function(ar)
+end
+API.DecryptMsg = function(ar)
     local arg,str = ar:Split(" "),""
     for i = 1,#arg do
         if arg[i]=="space" then
@@ -97,15 +99,17 @@ end,function(ar)
     end
     return str
 end
-local function SendEncrypted(msg)
-    game:GetService("Players"):Chat("--START OF ENCRYPTED MESSAGE--")
-    local encrypted = EncryptMsg(msg)
+API.SendEncrypted = function(msg)
+    game:GetService("Players"):Chat("----------------------")
+    wait()
+    local encrypted = API.EncryptMsg(msg)
     local words = encrypted:split(" ")
     local chunk = ""
     for i = 1,#words do
         local word = words[i]
         if #chunk + #word + 1 > 190 then
             game:GetService("Players"):Chat(chunk:sub(1,-2))
+            wait()
             chunk = word.." "
         else
             chunk = chunk..word.." "
@@ -113,22 +117,22 @@ local function SendEncrypted(msg)
     end
     if #chunk > 0 then
         game:GetService("Players"):Chat(chunk:sub(1,-2))
+        wait()
     end
-    game:GetService("Players"):Chat("--END OF ENCRYPTED MESSAGE--")
+    game:GetService("Players"):Chat("___________________________")
 end
 local CurrentlyListening,CurrentMsg,Connections,Commands = nil,"",{},{}
 local function OnChatted(arg,plr)
     if CurrentlyListening then
-        CurrentMsg = CurrentMsg..DecryptMsg(arg)
-    end;if arg=="--START OF ENCRYPTED MESSAGE--" and not CurrentlyListening then
+        CurrentMsg = CurrentMsg..(API.DecryptMsg(arg))
+    end;if arg=="----------------------" and not CurrentlyListening then
         CurrentlyListening = plr
-        --In case you try to make it bug
         task.spawn(function()
             local t = tick()+1
             repeat task.wait() until tick()-t>=0 or not CurrentlyListening
             CurrentlyListening = nil
         end)
-    end;if arg=="--END OF ENCRYPTED MESSAGE--" and CurrentlyListening then
+    end;if arg=="___________________________" and CurrentlyListening then
         CurrentlyListening = nil
         if Commands[CurrentMsg] then
             task.spawn(Commands[CurrentMsg],plr)
@@ -143,3 +147,5 @@ Commands["testing"] = function()
     helloworld("print")
 end
 SendEncrypted("Hello World!")
+
+return API
