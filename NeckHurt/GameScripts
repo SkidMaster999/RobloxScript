@@ -1,0 +1,4 @@
+local add = ...
+add("Discord Link",function()
+    return "no"
+end)
