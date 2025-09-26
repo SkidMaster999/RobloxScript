@@ -253,7 +253,7 @@ end
 Gui.Tween = function(f,t,p)
 	game:GetService("TweenService"):Create(f,TweenInfo.new(t,Enum.EasingStyle.Quad,Enum.EasingDirection.Out,0,false,0),{Position=p}):Play()
 end
-Gui.BarNotif = function(ms,dt,critical)
+Gui.BarNotif = function(ms,dt)
 	task.spawn(function()
 		local Announcement = Instance.new("TextLabel")
 		Announcement.Name = "Announcement"
@@ -545,6 +545,9 @@ Gui.AddMisc = function(Name,Desc,Callbacka,Tog)
 		end)
 	end
 end
+Gui.DestroyGui = function()
+	NGui:Destroy()
+end
 --GUI Connections
 ScriptsLabel.MouseButton1Click:Connect(function()
 	ScriptsFrame.Visible = true
@@ -576,7 +579,6 @@ end)
 CmdBar3.FocusLost:Connect(function()
 	Gui.Tween(CmdBar3,0.4,UDim2.new(-1.5,0,0.5,0))
 end)
---Opening/Closing
 CloseButton.MouseButton1Click:Connect(function()
 	local p = NFrame.Position
 	Gui.Tween(NFrame,0.7,UDim2.new(-1.5,p.X.Offset,p.Y.Scale,p.Y.Offset))
@@ -607,11 +609,8 @@ end)
 OpenGUI.MouseButton1Click:Connect(function()
 	Gui.Tween(NFrame,0.5,UDim2.new(0.5,0,0.5,0))
 end)
---Start
+Gui.Drag(OpenGUI)
+Gui.Drag(SemiColon)
 Gui.Drag(NFrame)
 pcall(function()NGui.Parent=game:GetService("CoreGui")end)
---End
-Gui.DestroyGui = function()
-	NGui:Destroy()
-end
 return Gui
