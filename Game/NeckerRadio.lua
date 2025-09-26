@@ -3,7 +3,7 @@ for i = 0,500 do
   game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Downloading Song";Text = "This consumes storage. Rejoin to stop";Icon = "";Duration = 5;})
   local V = game:HttpGet("https://neckerdestroyer.ct.ws/media/neckhurtsong"..tostring(i)..".mp3")
   if V then
-    writefile("neckhurtsong"..tostring(i)..".mp3",V)
+    if not isfile("neckhurtsong"..tostring(i)..".mp3") then writefile("neckhurtsong"..tostring(i)..".mp3",V) end
   else break end
   local A=getsynasset or getcustomasset
   local S=Instance.new("Sound")
