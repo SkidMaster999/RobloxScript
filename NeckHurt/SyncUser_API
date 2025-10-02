@@ -1,7 +1,8 @@
-
+--This is kinda useless
+--Encrypting messages with safe words prevents the stupid chatfilter
 --Dont abuse this api you nickger
-local API = {}
-local EncryptString,DecryptString = {
+
+local EncryptString,DecryptString,API = {
     ["a"] = "apple",
     ["b"] = "banana",
     ["c"] = "cat",
@@ -75,7 +76,7 @@ local EncryptString,DecryptString = {
     ["telescope"] = "7",
     ["electron"] = "8",
     ["atom"] = "9"
-}
+},{}
 API.EncryptMsg = function(ar)
     local str = ""
     for i = 1,#msg do
